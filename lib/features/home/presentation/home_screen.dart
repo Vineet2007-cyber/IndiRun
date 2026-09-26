@@ -5,6 +5,8 @@ import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_dimensions.dart';
 import '../../../core/localization/locale_provider.dart';
 import '../../../core/widgets/metric_display.dart';
+import '../../auth/application/auth_controller.dart';
+import '../../profile/application/profile_controller.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -13,6 +15,9 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = context.l10n;
     final currentLocale = ref.watch(localeProvider);
+    final authState = ref.watch(authControllerProvider);
+    final profileAsync = ref.watch(profileControllerProvider);
+    final displayName = profileAsync.value?.displayName ?? authState.user?.displayName ?? 'Runner';
 
     return Scaffold(
       appBar: AppBar(
@@ -58,7 +63,7 @@ class HomeScreen extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        l10n.home,
+                        '${l10n.welcomeToIndiRun}, $displayName',
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
                       const SizedBox(height: AppDimensions.space12),

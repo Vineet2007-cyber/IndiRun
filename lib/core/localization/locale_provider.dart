@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'generated/app_localizations.dart';
 
 export 'generated/app_localizations.dart';
@@ -23,20 +24,52 @@ enum AppLanguage {
     }
     return AppLanguage.english;
   }
+
+  static AppLanguage fromCode(String? code) {
+    if (code == null) return AppLanguage.english;
+    for (final lang in AppLanguage.values) {
+      if (lang.locale.languageCode == code) {
+        return lang;
+      }
+    }
+    return AppLanguage.english;
+  }
 }
 
 class LocaleNotifier extends Notifier<Locale> {
+  static const String prefKey = 'indirun_language_code';
+
   @override
   Locale build() {
+    _loadPersistedLocale();
     return AppLanguage.english.locale;
   }
 
-  void setLocale(Locale newLocale) {
-    state = newLocale;
+  Future<void> _loadPersistedLocale() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final code = prefs.getString(prefKey);
+      if (code != null && code.isNotEmpty) {
+        final language = AppLanguage.fromCode(code);
+        if (state != language.locale) {
+          state = language.locale;
+        }
+      }
+    } catch (_) {
+      // Graceful fallback to default in case shared preferences fails
+    }
   }
 
-  void setLanguage(AppLanguage language) {
-    state = language.locale;
+  Future<void> setLocale(Locale newLocale) async {
+    state = newLocale;
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString(prefKey, newLocale.languageCode);
+    } catch (_) {}
+  }
+
+  Future<void> setLanguage(AppLanguage language) async {
+    await setLocale(language.locale);
   }
 }
 

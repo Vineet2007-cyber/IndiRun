@@ -59,4 +59,89 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get auth => 'Sign In';
+
+  @override
+  String get continueWithGoogle => 'Continue with Google';
+
+  @override
+  String get signIn => 'Sign In';
+
+  @override
+  String get signOut => 'Sign Out';
+
+  @override
+  String get editProfile => 'Edit Profile';
+
+  @override
+  String get displayName => 'Display Name';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get units => 'Units';
+
+  @override
+  String get kilometers => 'Kilometers';
+
+  @override
+  String get miles => 'Miles';
+
+  @override
+  String get deleteAccount => 'Delete Account';
+
+  @override
+  String get deleteAccountConfirmTitle => 'Delete Account?';
+
+  @override
+  String get deleteAccountConfirmBody =>
+      'Are you sure? This will delete your profile and account.';
+
+  @override
+  String get authenticationFailed => 'Authentication failed';
+
+  @override
+  String get somethingWentWrong => 'Something went wrong';
+
+  @override
+  String get tryAgain => 'Try again';
+
+  @override
+  String get saving => 'Saving...';
+
+  @override
+  String get saved => 'Saved';
+
+  @override
+  String get voiceCues => 'Voice Cues';
+
+  @override
+  String get autoPause => 'Auto-pause';
+
+  @override
+  String get batteryGuidance => 'Battery Optimization Guidance';
+
+  @override
+  String get privacyPolicy => 'Privacy Policy';
+
+  @override
+  String get termsOfService => 'Terms of Service';
+
+  @override
+  String get appVersion => 'App Version';
+
+  @override
+  String get comingSoon => 'Coming in upcoming release';
+
+  @override
+  String get enterDisplayName => 'Enter your name';
+
+  @override
+  String get displayNameRequired => 'Display name cannot be empty';
+
+  @override
+  String get getStarted => 'Get Started';
 }

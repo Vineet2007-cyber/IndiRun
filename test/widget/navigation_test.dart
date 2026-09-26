@@ -2,12 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:indirun/app.dart';
+import 'package:indirun/data/local/in_memory_auth_repository.dart';
+import 'package:indirun/data/repositories/auth_repository.dart';
+import 'package:indirun/data/repositories/repository_providers.dart';
 
 void main() {
+  final authRepo = InMemoryAuthRepository(
+    initialUser: const AuthUser(
+      id: 'runner-007',
+      displayName: 'Karan Dave',
+      email: 'karan@example.com',
+    ),
+  );
+
   testWidgets('Navigation from Home to Run and back', (tester) async {
     await tester.pumpWidget(
-      const ProviderScope(
-        child: IndiRunApp(),
+      ProviderScope(
+        overrides: [
+          authRepositoryProvider.overrideWithValue(authRepo),
+        ],
+        child: const IndiRunApp(),
       ),
     );
     await tester.pumpAndSettle();
@@ -32,8 +46,11 @@ void main() {
 
   testWidgets('Navigation from Home to History and Run Detail', (tester) async {
     await tester.pumpWidget(
-      const ProviderScope(
-        child: IndiRunApp(),
+      ProviderScope(
+        overrides: [
+          authRepositoryProvider.overrideWithValue(authRepo),
+        ],
+        child: const IndiRunApp(),
       ),
     );
     await tester.pumpAndSettle();
@@ -55,8 +72,11 @@ void main() {
 
   testWidgets('Navigation from Home to Profile', (tester) async {
     await tester.pumpWidget(
-      const ProviderScope(
-        child: IndiRunApp(),
+      ProviderScope(
+        overrides: [
+          authRepositoryProvider.overrideWithValue(authRepo),
+        ],
+        child: const IndiRunApp(),
       ),
     );
     await tester.pumpAndSettle();
@@ -66,6 +86,8 @@ void main() {
     await tester.pumpAndSettle();
 
     // Verify on Profile screen
-    expect(find.text('IndiRun Runner • Tier 2/3 India'), findsOneWidget);
+    expect(find.text('Karan Dave'), findsOneWidget);
+    await tester.scrollUntilVisible(find.text('Sign Out'), 200);
+    expect(find.text('Sign Out'), findsOneWidget);
   });
 }

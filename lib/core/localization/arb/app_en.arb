@@ -67,5 +67,117 @@
   "auth": "Sign In",
   "@auth": {
     "description": "Sign in / Authentication title"
+  },
+  "continueWithGoogle": "Continue with Google",
+  "@continueWithGoogle": {
+    "description": "Sign in button with Google"
+  },
+  "signIn": "Sign In",
+  "@signIn": {
+    "description": "Sign in action"
+  },
+  "signOut": "Sign Out",
+  "@signOut": {
+    "description": "Sign out action"
+  },
+  "editProfile": "Edit Profile",
+  "@editProfile": {
+    "description": "Edit profile action"
+  },
+  "displayName": "Display Name",
+  "@displayName": {
+    "description": "User display name field label"
+  },
+  "email": "Email",
+  "@email": {
+    "description": "User email field label"
+  },
+  "language": "Language",
+  "@language": {
+    "description": "Language selection setting label"
+  },
+  "units": "Units",
+  "@units": {
+    "description": "Measurement units setting label"
+  },
+  "kilometers": "Kilometers",
+  "@kilometers": {
+    "description": "Metric distance unit"
+  },
+  "miles": "Miles",
+  "@miles": {
+    "description": "Imperial distance unit"
+  },
+  "deleteAccount": "Delete Account",
+  "@deleteAccount": {
+    "description": "Delete account action"
+  },
+  "deleteAccountConfirmTitle": "Delete Account?",
+  "@deleteAccountConfirmTitle": {
+    "description": "Confirmation title for account deletion"
+  },
+  "deleteAccountConfirmBody": "Are you sure? This will delete your profile and account.",
+  "@deleteAccountConfirmBody": {
+    "description": "Confirmation message for account deletion"
+  },
+  "authenticationFailed": "Authentication failed",
+  "@authenticationFailed": {
+    "description": "Error message when authentication fails"
+  },
+  "somethingWentWrong": "Something went wrong",
+  "@somethingWentWrong": {
+    "description": "Generic error message"
+  },
+  "tryAgain": "Try again",
+  "@tryAgain": {
+    "description": "Retry action label"
+  },
+  "saving": "Saving...",
+  "@saving": {
+    "description": "Saving state message"
+  },
+  "saved": "Saved",
+  "@saved": {
+    "description": "Saved successfully message"
+  },
+  "voiceCues": "Voice Cues",
+  "@voiceCues": {
+    "description": "Voice cues setting label"
+  },
+  "autoPause": "Auto-pause",
+  "@autoPause": {
+    "description": "Auto pause setting label"
+  },
+  "batteryGuidance": "Battery Optimization Guidance",
+  "@batteryGuidance": {
+    "description": "Battery guidance setting label"
+  },
+  "privacyPolicy": "Privacy Policy",
+  "@privacyPolicy": {
+    "description": "Privacy policy setting label"
+  },
+  "termsOfService": "Terms of Service",
+  "@termsOfService": {
+    "description": "Terms of service setting label"
+  },
+  "appVersion": "App Version",
+  "@appVersion": {
+    "description": "App version label"
+  },
+  "comingSoon": "Coming in upcoming release",
+  "@comingSoon": {
+    "description": "Notice for features scheduled in later milestones"
+  },
+  "enterDisplayName": "Enter your name",
+  "@enterDisplayName": {
+    "description": "Hint for display name input"
+  },
+  "displayNameRequired": "Display name cannot be empty",
+  "@displayNameRequired": {
+    "description": "Validation error for empty display name"
+  },
+  "getStarted": "Get Started",
+  "@getStarted": {
+    "description": "Get started call to action button"
   }
 }

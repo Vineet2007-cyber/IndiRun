@@ -201,6 +201,174 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sign In'**
   String get auth;
+
+  /// Sign in button with Google
+  ///
+  /// In en, this message translates to:
+  /// **'Continue with Google'**
+  String get continueWithGoogle;
+
+  /// Sign in action
+  ///
+  /// In en, this message translates to:
+  /// **'Sign In'**
+  String get signIn;
+
+  /// Sign out action
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Out'**
+  String get signOut;
+
+  /// Edit profile action
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Profile'**
+  String get editProfile;
+
+  /// User display name field label
+  ///
+  /// In en, this message translates to:
+  /// **'Display Name'**
+  String get displayName;
+
+  /// User email field label
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get email;
+
+  /// Language selection setting label
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get language;
+
+  /// Measurement units setting label
+  ///
+  /// In en, this message translates to:
+  /// **'Units'**
+  String get units;
+
+  /// Metric distance unit
+  ///
+  /// In en, this message translates to:
+  /// **'Kilometers'**
+  String get kilometers;
+
+  /// Imperial distance unit
+  ///
+  /// In en, this message translates to:
+  /// **'Miles'**
+  String get miles;
+
+  /// Delete account action
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Account'**
+  String get deleteAccount;
+
+  /// Confirmation title for account deletion
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Account?'**
+  String get deleteAccountConfirmTitle;
+
+  /// Confirmation message for account deletion
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure? This will delete your profile and account.'**
+  String get deleteAccountConfirmBody;
+
+  /// Error message when authentication fails
+  ///
+  /// In en, this message translates to:
+  /// **'Authentication failed'**
+  String get authenticationFailed;
+
+  /// Generic error message
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong'**
+  String get somethingWentWrong;
+
+  /// Retry action label
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get tryAgain;
+
+  /// Saving state message
+  ///
+  /// In en, this message translates to:
+  /// **'Saving...'**
+  String get saving;
+
+  /// Saved successfully message
+  ///
+  /// In en, this message translates to:
+  /// **'Saved'**
+  String get saved;
+
+  /// Voice cues setting label
+  ///
+  /// In en, this message translates to:
+  /// **'Voice Cues'**
+  String get voiceCues;
+
+  /// Auto pause setting label
+  ///
+  /// In en, this message translates to:
+  /// **'Auto-pause'**
+  String get autoPause;
+
+  /// Battery guidance setting label
+  ///
+  /// In en, this message translates to:
+  /// **'Battery Optimization Guidance'**
+  String get batteryGuidance;
+
+  /// Privacy policy setting label
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get privacyPolicy;
+
+  /// Terms of service setting label
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Service'**
+  String get termsOfService;
+
+  /// App version label
+  ///
+  /// In en, this message translates to:
+  /// **'App Version'**
+  String get appVersion;
+
+  /// Notice for features scheduled in later milestones
+  ///
+  /// In en, this message translates to:
+  /// **'Coming in upcoming release'**
+  String get comingSoon;
+
+  /// Hint for display name input
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your name'**
+  String get enterDisplayName;
+
+  /// Validation error for empty display name
+  ///
+  /// In en, this message translates to:
+  /// **'Display name cannot be empty'**
+  String get displayNameRequired;
+
+  /// Get started call to action button
+  ///
+  /// In en, this message translates to:
+  /// **'Get Started'**
+  String get getStarted;
 }
 
 class _AppLocalizationsDelegate
