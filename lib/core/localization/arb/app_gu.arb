@@ -1,0 +1,20 @@
+{
+  "@@locale": "gu",
+  "appTitle": "ઇન્ડીરન",
+  "welcomeToIndiRun": "ઇન્ડીરનમાં આપનું સ્વાગત છે",
+  "home": "હોમ",
+  "startRun": "દોડ શરૂ કરો",
+  "history": "ઇતિહાસ",
+  "profile": "પ્રોફાઇલ",
+  "settings": "સેટિંગ્સ",
+  "run": "દોડ",
+  "distance": "અંતર",
+  "duration": "સમય",
+  "pace": "ઝડપ",
+  "avgPace": "સરેરાશ ઝડપ",
+  "share": "શેર કરો",
+  "save": "સાચવો",
+  "cancel": "રદ કરો",
+  "onboarding": "પરિચય",
+  "auth": "સાઇન ઇન"
+}

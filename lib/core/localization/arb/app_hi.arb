@@ -1,0 +1,20 @@
+{
+  "@@locale": "hi",
+  "appTitle": "इंडीरन",
+  "welcomeToIndiRun": "इंडीरन में आपका स्वागत है",
+  "home": "होम",
+  "startRun": "दौड़ शुरू करें",
+  "history": "इतिहास",
+  "profile": "प्रोफ़ाइल",
+  "settings": "सेटिंग्स",
+  "run": "दौड़",
+  "distance": "दूरी",
+  "duration": "समय",
+  "pace": "गति",
+  "avgPace": "औसत गति",
+  "share": "शेयर करें",
+  "save": "सहेजें",
+  "cancel": "रद्द करें",
+  "onboarding": "परिचय",
+  "auth": "साइन इन"
+}

@@ -1,0 +1,71 @@
+{
+  "@@locale": "en",
+  "appTitle": "IndiRun",
+  "@appTitle": {
+    "description": "The name of the application"
+  },
+  "welcomeToIndiRun": "Welcome to IndiRun",
+  "@welcomeToIndiRun": {
+    "description": "Welcome message shown on onboarding"
+  },
+  "home": "Home",
+  "@home": {
+    "description": "Home screen title and navigation label"
+  },
+  "startRun": "Start Run",
+  "@startRun": {
+    "description": "Button label to initiate a run"
+  },
+  "history": "History",
+  "@history": {
+    "description": "History screen title and navigation label"
+  },
+  "profile": "Profile",
+  "@profile": {
+    "description": "Profile screen title and navigation label"
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "Settings label"
+  },
+  "run": "Run",
+  "@run": {
+    "description": "Generic run label or active run screen title"
+  },
+  "distance": "Distance",
+  "@distance": {
+    "description": "Label for running distance"
+  },
+  "duration": "Duration",
+  "@duration": {
+    "description": "Label for running duration"
+  },
+  "pace": "Pace",
+  "@pace": {
+    "description": "Label for running pace"
+  },
+  "avgPace": "Avg Pace",
+  "@avgPace": {
+    "description": "Label for average pace"
+  },
+  "share": "Share",
+  "@share": {
+    "description": "Button or action label to share run"
+  },
+  "save": "Save",
+  "@save": {
+    "description": "Save action label"
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Cancel action label"
+  },
+  "onboarding": "Onboarding",
+  "@onboarding": {
+    "description": "Onboarding screen title"
+  },
+  "auth": "Sign In",
+  "@auth": {
+    "description": "Sign in / Authentication title"
+  }
+}

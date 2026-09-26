@@ -1,4 +1,4 @@
-package com.indirun.indirun
+package com.indirun.app
 
 import io.flutter.embedding.android.FlutterActivity
 
