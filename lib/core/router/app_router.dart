@@ -3,12 +3,21 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/auth/application/auth_controller.dart';
 import '../../features/auth/presentation/auth_screen.dart';
-import '../../features/auth/presentation/onboarding_screen.dart';
+import '../../features/auth/presentation/choose_username_screen.dart';
+import '../../features/auth/presentation/forgot_password_screen.dart';
+import '../../features/auth/presentation/location_permission_screen.dart';
+import '../../features/auth/presentation/splash_screen.dart';
+import '../../features/dev/presentation/ds_preview_screen.dart';
 import '../../features/history/presentation/history_screen.dart';
 import '../../features/history/presentation/run_detail_screen.dart';
 import '../../features/home/presentation/home_screen.dart';
+import '../../features/profile/presentation/edit_profile_screen.dart';
 import '../../features/profile/presentation/profile_screen.dart';
+import '../../features/profile/presentation/settings_screen.dart';
+import '../../features/run/presentation/countdown_screen.dart';
+import '../../features/run/presentation/pre_run_screen.dart';
 import '../../features/run/presentation/run_screen.dart';
+import '../../features/run/presentation/run_summary_screen.dart';
 import '../../features/share/presentation/share_screen.dart';
 import 'app_routes.dart';
 
@@ -22,12 +31,12 @@ class _RouterNotifier extends ChangeNotifier {
   }
 }
 
-final routerNotifierProvider = Provider<_RouterNotifier>((ref) {
+final _routerNotifierProvider = Provider<_RouterNotifier>((ref) {
   return _RouterNotifier(ref);
 });
 
 final appRouterProvider = Provider<GoRouter>((ref) {
-  final notifier = ref.watch(routerNotifierProvider);
+  final notifier = ref.watch(_routerNotifierProvider);
 
   return GoRouter(
     initialLocation: AppRoutes.home,
@@ -35,54 +44,82 @@ final appRouterProvider = Provider<GoRouter>((ref) {
     redirect: (context, state) {
       final authState = ref.read(authControllerProvider);
       final isAuth = authState.isAuthenticated;
-      final location = state.matchedLocation;
+      final loc = state.matchedLocation;
 
-      final isAuthRoute = location == AppRoutes.auth || location == AppRoutes.onboarding;
+      final publicRoutes = {
+        AppRoutes.splash,
+        AppRoutes.login,
+        AppRoutes.signup,
+        AppRoutes.forgotPassword,
+        AppRoutes.username,
+        AppRoutes.permission,
+        AppRoutes.dsPreview,
+      };
 
-      // If unauthenticated, redirect from protected routes to auth
-      if (!isAuth && !isAuthRoute) {
-        return AppRoutes.auth;
+      // If not authenticated and trying to access a protected route → login
+      if (!isAuth && !publicRoutes.contains(loc)) {
+        return AppRoutes.login;
       }
 
-      // If already authenticated and trying to access auth/onboarding, redirect to home
-      if (isAuth && isAuthRoute) {
-        return AppRoutes.home;
-      }
-
-      // Handle root route
-      if (location == AppRoutes.root) {
-        return isAuth ? AppRoutes.home : AppRoutes.auth;
-      }
+      // Root → splash
+      if (loc == AppRoutes.root) return AppRoutes.splash;
 
       return null;
     },
     routes: [
       GoRoute(
         path: AppRoutes.root,
-        redirect: (context, state) {
-          final isAuth = ref.read(authControllerProvider).isAuthenticated;
-          return isAuth ? AppRoutes.home : AppRoutes.auth;
-        },
+        redirect: (_, _) => AppRoutes.splash,
       ),
       GoRoute(
-        path: AppRoutes.onboarding,
-        builder: (context, state) => const OnboardingScreen(),
+        path: AppRoutes.splash,
+        builder: (_, _) => const SplashScreen(),
       ),
       GoRoute(
-        path: AppRoutes.auth,
-        builder: (context, state) => const AuthScreen(),
+        path: AppRoutes.login,
+        builder: (_, _) => const LoginScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.signup,
+        builder: (_, _) => const SignUpScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.username,
+        builder: (_, _) => const ChooseUsernameScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.forgotPassword,
+        builder: (_, _) => const ForgotPasswordScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.permission,
+        builder: (_, _) => const LocationPermissionScreen(),
       ),
       GoRoute(
         path: AppRoutes.home,
-        builder: (context, state) => const HomeScreen(),
+        builder: (_, _) => const HomeScreen(),
       ),
       GoRoute(
-        path: AppRoutes.run,
-        builder: (context, state) => const RunScreen(),
+        path: AppRoutes.preRun,
+        builder: (_, _) => const PreRunScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.countdown,
+        builder: (_, _) => const CountdownScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.activeRun,
+        builder: (_, _) => const ActiveRunScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.runSummary,
+        builder: (context, state) => RunSummaryScreen(
+          extra: state.extra as Map<String, dynamic>?,
+        ),
       ),
       GoRoute(
         path: AppRoutes.history,
-        builder: (context, state) => const HistoryScreen(),
+        builder: (_, _) => const HistoryScreen(),
         routes: [
           GoRoute(
             path: ':runId',
@@ -95,11 +132,25 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(
         path: AppRoutes.share,
-        builder: (context, state) => const ShareScreen(),
+        builder: (context, state) => ShareScreen(
+          extra: state.extra as Map<String, dynamic>?,
+        ),
       ),
       GoRoute(
         path: AppRoutes.profile,
-        builder: (context, state) => const ProfileScreen(),
+        builder: (_, _) => const ProfileScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.editProfile,
+        builder: (_, _) => const EditProfileScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.settings,
+        builder: (_, _) => const SettingsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.dsPreview,
+        builder: (_, _) => const DsPreviewScreen(),
       ),
     ],
     errorBuilder: (context, state) => Scaffold(

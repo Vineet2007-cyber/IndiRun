@@ -11,64 +11,123 @@ import 'package:indirun/features/profile/domain/user_profile.dart';
 import 'package:indirun/features/profile/presentation/profile_screen.dart';
 
 void main() {
-  testWidgets('ProfileScreen renders user details, settings, and allows name edit', (tester) async {
-    const user = AuthUser(id: 'user-001', displayName: 'Pooja Shah', email: 'pooja@example.com');
-    final authRepo = InMemoryAuthRepository(initialUser: user);
-    final profileRepo = InMemoryProfileRepository({
-      'user-001': UserProfile(
-        id: 'user-001',
-        displayName: 'Pooja Shah',
-        email: 'pooja@example.com',
-        createdAt: DateTime.now(),
-      ),
-    });
+  group('ProfileScreen', () {
+    Widget buildProfileScreen({
+      AuthUser? user,
+      UserProfile? profile,
+    }) {
+      final testUser = user ??
+          const AuthUser(
+            id: 'user-001',
+            displayName: 'Pooja Shah',
+            email: 'pooja@example.com',
+          );
+      final authRepo = InMemoryAuthRepository(initialUser: testUser);
+      final profileRepo = InMemoryProfileRepository({
+        testUser.id: profile ??
+            UserProfile(
+              id: testUser.id,
+              displayName: testUser.displayName ?? 'Runner',
+              email: testUser.email,
+              createdAt: DateTime.now(),
+            ),
+      });
 
-    await tester.pumpWidget(
-      ProviderScope(
+      return ProviderScope(
         overrides: [
           authRepositoryProvider.overrideWithValue(authRepo),
           profileRepositoryProvider.overrideWithValue(profileRepo),
         ],
         child: MaterialApp(
-          theme: AppTheme.darkTheme,
+          theme: AppTheme.lightTheme,
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
           home: const ProfileScreen(),
         ),
-      ),
-    );
+      );
+    }
 
-    await tester.pumpAndSettle();
+    testWidgets('renders username and avatar initial', (tester) async {
+      await tester.pumpWidget(buildProfileScreen());
+      await tester.pumpAndSettle();
 
-    // Verify user details
-    expect(find.text('Pooja Shah'), findsOneWidget);
-    expect(find.text('pooja@example.com'), findsOneWidget);
+      // Avatar initial 'P' for 'Pooja Shah'
+      expect(find.text('P'), findsOneWidget);
+      // @username text
+      expect(find.text('@Pooja Shah'), findsOneWidget);
+    });
 
-    // Verify settings sections
-    expect(find.text('Language'), findsOneWidget);
-    expect(find.text('Units'), findsOneWidget);
-    expect(find.text('Voice Cues'), findsOneWidget);
-    expect(find.text('Auto-pause'), findsOneWidget);
+    testWidgets('does NOT contain a Language selector', (tester) async {
+      // V1 is English-only — no language UI should be present in the profile.
+      await tester.pumpWidget(buildProfileScreen());
+      await tester.pumpAndSettle();
 
-    // Tap edit button to open dialog
-    await tester.tap(find.byIcon(Icons.edit_outlined));
-    await tester.pumpAndSettle();
+      expect(find.text('Language'), findsNothing);
+      expect(find.text('Hindi'), findsNothing);
+      expect(find.text('Gujarati'), findsNothing);
+      expect(find.text('English'), findsNothing); // no language picker at all
+    });
 
-    // Dialog should be open
-    expect(find.text('Edit Profile'), findsOneWidget);
-    final textFormField = find.byType(TextFormField);
-    expect(textFormField, findsOneWidget);
+    testWidgets('contains Edit profile button', (tester) async {
+      await tester.pumpWidget(buildProfileScreen());
+      await tester.pumpAndSettle();
 
-    // Enter new name and save
-    await tester.enterText(textFormField, 'Pooja S.');
-    await tester.tap(find.text('Save'));
-    await tester.pumpAndSettle();
+      expect(find.text('Edit profile'), findsOneWidget);
+    });
 
-    // Profile should be updated
-    expect(find.text('Pooja S.'), findsOneWidget);
+    testWidgets('contains Logout button', (tester) async {
+      await tester.pumpWidget(buildProfileScreen());
+      await tester.pumpAndSettle();
 
-    // Scroll to and verify sign out button
-    await tester.scrollUntilVisible(find.text('Sign Out'), 200);
-    expect(find.text('Sign Out'), findsOneWidget);
+      expect(find.text('Logout'), findsOneWidget);
+    });
+
+    testWidgets('app starts correctly with no saved language preference', (tester) async {
+      // When there is no stored language preference the app defaults to English
+      await tester.pumpWidget(buildProfileScreen());
+      await tester.pumpAndSettle();
+
+      // Profile screen renders without crash
+      expect(find.byType(Scaffold), findsOneWidget);
+    });
+  });
+
+  group('AppLanguage locale safety', () {
+    test('AppLanguage.fromCode returns English for null (no saved preference)', () {
+      expect(AppLanguage.fromCode(null), AppLanguage.english);
+    });
+
+    test('AppLanguage.fromCode returns English for legacy hi preference', () {
+      expect(AppLanguage.fromCode('hi'), AppLanguage.english);
+    });
+
+    test('AppLanguage.fromCode returns English for legacy gu preference', () {
+      expect(AppLanguage.fromCode('gu'), AppLanguage.english);
+    });
+
+    test('AppLanguage.fromCode returns English for en preference', () {
+      expect(AppLanguage.fromCode('en'), AppLanguage.english);
+    });
+
+    test('AppLanguage.fromLocale always returns English', () {
+      expect(AppLanguage.fromLocale(const Locale('en')), AppLanguage.english);
+      expect(AppLanguage.fromLocale(const Locale('hi')), AppLanguage.english);
+      expect(AppLanguage.fromLocale(const Locale('gu')), AppLanguage.english);
+    });
+
+    test('Hindi is not in AppLocalizations.supportedLocales', () {
+      final codes = AppLocalizations.supportedLocales.map((l) => l.languageCode).toList();
+      expect(codes, isNot(contains('hi')));
+    });
+
+    test('Gujarati is not in AppLocalizations.supportedLocales', () {
+      final codes = AppLocalizations.supportedLocales.map((l) => l.languageCode).toList();
+      expect(codes, isNot(contains('gu')));
+    });
+
+    test('English is the only supported locale', () {
+      final codes = AppLocalizations.supportedLocales.map((l) => l.languageCode).toList();
+      expect(codes, equals(['en']));
+    });
   });
 }

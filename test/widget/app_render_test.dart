@@ -6,7 +6,7 @@ import 'package:indirun/data/repositories/auth_repository.dart';
 import 'package:indirun/data/repositories/repository_providers.dart';
 
 void main() {
-  testWidgets('IndiRunApp renders and shows branding and home action when authenticated', (tester) async {
+  testWidgets('IndiRunApp renders and navigates to Home when authenticated', (tester) async {
     final authRepo = InMemoryAuthRepository(
       initialUser: const AuthUser(
         id: 'test-runner',
@@ -25,10 +25,7 @@ void main() {
 
     await tester.pumpAndSettle();
 
-    // Verify app title branding is present
-    expect(find.text('IndiRun'), findsOneWidget);
-
-    // Verify primary run action is present on home screen
+    // Home screen — primary action button is present
     expect(find.text('Start Run'), findsOneWidget);
   });
 }

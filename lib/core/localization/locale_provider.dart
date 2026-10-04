@@ -1,75 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'generated/app_localizations.dart';
 
 export 'generated/app_localizations.dart';
 
+/// IndiRun V1 supports English only.
+///
+/// The [AppLanguage] enum is kept as a single-entry type so the localization
+/// architecture can support additional languages in the future without
+/// structural changes. Hindi and Gujarati support was removed in V1.
 enum AppLanguage {
-  english(Locale('en'), 'English', 'English'),
-  hindi(Locale('hi'), 'Hindi', 'हिन्दी'),
-  gujarati(Locale('gu'), 'Gujarati', 'ગુજરાતી');
+  english(Locale('en'), 'English');
 
   final Locale locale;
   final String label;
-  final String nativeLabel;
 
-  const AppLanguage(this.locale, this.label, this.nativeLabel);
+  const AppLanguage(this.locale, this.label);
 
+  /// Always returns [AppLanguage.english] in V1.
+  /// Any legacy stored locale value ('hi', 'gu', or null) is silently
+  /// treated as English — there is no crash on old stored preferences.
   static AppLanguage fromLocale(Locale locale) {
-    for (final lang in AppLanguage.values) {
-      if (lang.locale.languageCode == locale.languageCode) {
-        return lang;
-      }
-    }
     return AppLanguage.english;
   }
 
+  /// Always returns [AppLanguage.english] in V1.
+  /// Legacy codes 'hi' and 'gu' are safely ignored.
   static AppLanguage fromCode(String? code) {
-    if (code == null) return AppLanguage.english;
-    for (final lang in AppLanguage.values) {
-      if (lang.locale.languageCode == code) {
-        return lang;
-      }
-    }
     return AppLanguage.english;
   }
 }
 
+/// Locale notifier locked to English for V1.
+///
+/// [setLocale] is a no-op that always keeps the state as [Locale('en')].
+/// This means any old 'hi' or 'gu' preference read from SharedPreferences
+/// or the database will be ignored — the app always displays in English.
 class LocaleNotifier extends Notifier<Locale> {
-  static const String prefKey = 'indirun_language_code';
-
   @override
   Locale build() {
-    _loadPersistedLocale();
-    return AppLanguage.english.locale;
+    return const Locale('en');
   }
 
-  Future<void> _loadPersistedLocale() async {
-    try {
-      final prefs = await SharedPreferences.getInstance();
-      final code = prefs.getString(prefKey);
-      if (code != null && code.isNotEmpty) {
-        final language = AppLanguage.fromCode(code);
-        if (state != language.locale) {
-          state = language.locale;
-        }
-      }
-    } catch (_) {
-      // Graceful fallback to default in case shared preferences fails
-    }
-  }
-
+  /// No-op in V1. The locale is always English regardless of input.
   Future<void> setLocale(Locale newLocale) async {
-    state = newLocale;
-    try {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setString(prefKey, newLocale.languageCode);
-    } catch (_) {}
-  }
-
-  Future<void> setLanguage(AppLanguage language) async {
-    await setLocale(language.locale);
+    state = const Locale('en');
   }
 }
 

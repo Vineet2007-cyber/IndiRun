@@ -3,10 +3,12 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/config/config_provider.dart';
 import '../local/in_memory_auth_repository.dart';
 import '../local/in_memory_profile_repository.dart';
+import '../local/in_memory_run_repository.dart';
 import '../remote/supabase_auth_repository.dart';
 import '../remote/supabase_profile_repository.dart';
 import 'auth_repository.dart';
 import 'profile_repository.dart';
+import 'run_repository.dart';
 
 final authRepositoryProvider = Provider<AuthRepository>((ref) {
   final config = ref.watch(appConfigProvider);
@@ -36,4 +38,8 @@ final profileRepositoryProvider = Provider<ProfileRepository>((ref) {
   }
 
   return InMemoryProfileRepository();
+});
+
+final runRepositoryProvider = Provider<RunRepository>((ref) {
+  return InMemoryRunRepository();
 });

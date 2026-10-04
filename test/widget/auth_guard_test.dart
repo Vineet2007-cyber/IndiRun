@@ -6,7 +6,7 @@ import 'package:indirun/data/repositories/auth_repository.dart';
 import 'package:indirun/data/repositories/repository_providers.dart';
 
 void main() {
-  testWidgets('Unauthenticated user is redirected to Auth screen', (tester) async {
+  testWidgets('Unauthenticated user is redirected to Login screen', (tester) async {
     final unauthRepo = InMemoryAuthRepository(); // currentUser is null
 
     await tester.pumpWidget(
@@ -20,9 +20,10 @@ void main() {
 
     await tester.pumpAndSettle();
 
-    // Verify redirected to Auth screen instead of Home
-    expect(find.text('Continue with Google'), findsOneWidget);
+    // Verify redirected to Login — Home/Run actions must not be visible
     expect(find.text('Start Run'), findsNothing);
+    // Login screen has the Login button
+    expect(find.text('Login'), findsOneWidget);
   });
 
   testWidgets('Authenticated user is redirected to Home screen', (tester) async {
@@ -45,9 +46,9 @@ void main() {
 
     await tester.pumpAndSettle();
 
-    // Verify reached Home screen with greeting
+    // Home screen: primary run action is present
     expect(find.text('Start Run'), findsOneWidget);
-    expect(find.textContaining('Aarav Patel'), findsOneWidget);
-    expect(find.text('Continue with Google'), findsNothing);
+    // Login screen must not be visible
+    expect(find.text('Login'), findsNothing);
   });
 }

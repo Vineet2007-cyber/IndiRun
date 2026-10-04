@@ -13,7 +13,7 @@ abstract interface class ProfileRepository {
   /// Updates distance units preference (kilometers / miles).
   Future<void> updateUnits(String userId, DistanceUnit units);
 
-  /// Updates user language preference code ('en', 'hi', 'gu').
+  /// Updates user language preference code. V1 supports 'en' only.
   Future<void> updateLanguage(String userId, String languageCode);
 
   /// Deletes the user profile record.

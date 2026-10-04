@@ -36,6 +36,21 @@ abstract interface class AuthRepository {
   /// Initiates Google OAuth authentication flow.
   Future<void> signInWithGoogle({String? redirectTo});
 
+  /// Signs in with username and password.
+  Future<void> signInWithUsernameAndPassword(String username, String password);
+
+  /// Checks if a username is available.
+  Future<bool> isUsernameAvailable(String username);
+
+  /// Completes sign-up with chosen username and password.
+  Future<void> completeSignUp({
+    required String username,
+    required String password,
+  });
+
+  /// Sends a password reset link for the given username. Returns masked email hint.
+  Future<String?> sendPasswordReset(String username);
+
   /// Terminates current user session.
   Future<void> signOut();
 

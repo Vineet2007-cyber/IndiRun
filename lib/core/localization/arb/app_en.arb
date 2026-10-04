@@ -1,183 +1,179 @@
 {
   "@@locale": "en",
   "appTitle": "IndiRun",
-  "@appTitle": {
-    "description": "The name of the application"
-  },
-  "welcomeToIndiRun": "Welcome to IndiRun",
-  "@welcomeToIndiRun": {
-    "description": "Welcome message shown on onboarding"
-  },
+  "tagline": "Every run, your own.",
+  "welcomeToIndiRun": "Welcome to",
   "home": "Home",
-  "@home": {
-    "description": "Home screen title and navigation label"
-  },
   "startRun": "Start Run",
-  "@startRun": {
-    "description": "Button label to initiate a run"
-  },
+  "startYourFirstRun": "Start your first run",
   "history": "History",
-  "@history": {
-    "description": "History screen title and navigation label"
-  },
+  "allHistory": "All history",
   "profile": "Profile",
-  "@profile": {
-    "description": "Profile screen title and navigation label"
-  },
   "settings": "Settings",
-  "@settings": {
-    "description": "Settings label"
-  },
   "run": "Run",
-  "@run": {
-    "description": "Generic run label or active run screen title"
-  },
   "distance": "Distance",
-  "@distance": {
-    "description": "Label for running distance"
-  },
   "duration": "Duration",
-  "@duration": {
-    "description": "Label for running duration"
-  },
   "pace": "Pace",
-  "@pace": {
-    "description": "Label for running pace"
-  },
   "avgPace": "Avg Pace",
-  "@avgPace": {
-    "description": "Label for average pace"
-  },
+  "elevGain": "Elev Gain",
+  "bestKm": "Best Km",
+  "calories": "Calories",
+  "splits": "Splits",
   "share": "Share",
-  "@share": {
-    "description": "Button or action label to share run"
-  },
   "save": "Save",
-  "@save": {
-    "description": "Save action label"
-  },
   "cancel": "Cancel",
-  "@cancel": {
-    "description": "Cancel action label"
-  },
+  "discard": "Discard",
   "onboarding": "Onboarding",
-  "@onboarding": {
-    "description": "Onboarding screen title"
-  },
   "auth": "Sign In",
-  "@auth": {
-    "description": "Sign in / Authentication title"
-  },
+  "login": "Login",
+  "signUp": "Sign up",
   "continueWithGoogle": "Continue with Google",
-  "@continueWithGoogle": {
-    "description": "Sign in button with Google"
-  },
+  "loginWithGoogle": "Login with Google",
   "signIn": "Sign In",
-  "@signIn": {
-    "description": "Sign in action"
-  },
   "signOut": "Sign Out",
-  "@signOut": {
-    "description": "Sign out action"
-  },
-  "editProfile": "Edit Profile",
-  "@editProfile": {
-    "description": "Edit profile action"
-  },
+  "logout": "Logout",
+  "editProfile": "Edit profile",
   "displayName": "Display Name",
-  "@displayName": {
-    "description": "User display name field label"
+  "username": "Username",
+  "password": "Password",
+  "createPassword": "Create password",
+  "confirmPassword": "Confirm password",
+  "forgotPassword": "Forgot password?",
+  "newUser": "New user?",
+  "signUpWithGoogle": "Sign up with Google",
+  "alreadyRegistered": "Already registered?",
+  "createYourAccount": "Create your account",
+  "signUpWithGoogleToGetStarted": "Sign up with Google to get started",
+  "googleVerificationNote": "Google is only used to verify you. Your Google name is never shown.",
+  "termsAndPrivacyNotice": "By continuing you agree to Terms and Privacy Policy",
+  "pickYourRunnerName": "Pick your runner name",
+  "howYouAppear": "This is how you appear in IndiRun.",
+  "stepTwoOfTwo": "Step 2 of 2",
+  "continueLabel": "Continue",
+  "resetPassword": "Reset password",
+  "enterYourUsername": "Enter your username",
+  "resetPasswordDescription": "We will email a reset link to the address linked with your Google account.",
+  "sendResetLink": "Send reset link",
+  "checkYourInbox": "Check your inbox. Link expires in 30 minutes.",
+  "resendIn": "Resend in {seconds}s",
+  "@resendIn": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
   },
-  "email": "Email",
-  "@email": {
-    "description": "User email field label"
+  "allowLocationWhileRunning": "Allow location while running",
+  "trackDistancePaceRoute": "Track distance, pace and route",
+  "keepTrackingScreenLocked": "Keep tracking with the screen locked",
+  "dataStaysPrivate": "Your data stays private until you share it",
+  "allowLocation": "Allow location",
+  "notNow": "Not now",
+  "changeLaterInSettings": "You can change this later in Settings",
+  "thisWeek": "This week",
+  "pastRuns": "Past runs",
+  "noRunsYet": "No runs yet",
+  "firstRunOneTap": "Your first run is one tap away.",
+  "startLocation": "Start",
+  "endLocation": "End",
+  "myLocation": "My location",
+  "notSet": "Not set",
+  "time": "Time",
+  "searchByLocation": "Search by location",
+  "voiceCuesTitle": "Voice-cues",
+  "pickRouteToEnable": "Pick a route to enable",
+  "leftRightPrompts": "Left / right prompts in earphones",
+  "twsConnected": "TWS connected",
+  "testVoice": "Test voice",
+  "setupLockedOnceStarted": "Setup is locked once the run starts",
+  "useMyCurrentLocation": "Use my current location",
+  "cantFindChooseOnMap": "Can't find it? Choose on map",
+  "resultsLimitedToIndia": "Results limited to India",
+  "dragMapToMovePin": "Drag map to move the pin",
+  "setAsStart": "Set as Start",
+  "setAsEnd": "Set as End",
+  "mapStyle": "Map style",
+  "mapDefault": "Default",
+  "mapSatellite": "Satellite",
+  "mapPublicTransport": "Public transport",
+  "choiceRemembered": "Your choice is remembered for next time",
+  "gpsSearching": "Searching GPS...",
+  "gpsWeak": "Weak signal. Move to open sky",
+  "gpsOff": "GPS is off. Tap to turn on",
+  "locationPermissionDenied": "Location permission denied. Open settings",
+  "gpsReady": "GPS ready",
+  "startDisabled": "Start disabled",
+  "startBlocked": "Start blocked",
+  "startAnyway": "Start anyway (asks to confirm)",
+  "getReady": "Get ready",
+  "voiceGuidanceOn": "Voice guidance is on",
+  "voiceGuidanceOff": "Voice guidance is off",
+  "tapToCancel": "Tap to cancel",
+  "pauseRun": "Pause Run",
+  "resume": "Resume",
+  "endRun": "End Run",
+  "paused": "PAUSED",
+  "voiceOn": "Voice on",
+  "voicePaused": "Voice paused",
+  "endThisRun": "End this run?",
+  "keepRunning": "Keep running",
+  "veryShortRun": "Very short run",
+  "veryShortRunPrompt": "This run is under 100 m. Save or discard it?",
+  "runComplete": "Run complete",
+  "voiceGuided": "Voice-guided",
+  "saveRun": "Save run",
+  "shareYourRun": "Share your run",
+  "classic": "Classic",
+  "routeFocus": "Route",
+  "statsFocus": "Stats",
+  "story": "Story",
+  "blurStartAndEnd": "Blur start and end of route",
+  "shareTo": "Share to...",
+  "saveImageToGallery": "Save image to gallery",
+  "runsCount": "RUNS",
+  "memberSince": "Member since {date}",
+  "@memberSince": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
   },
-  "language": "Language",
-  "@language": {
-    "description": "Language selection setting label"
-  },
+  "appearance": "APPEARANCE",
+  "light": "Light",
+  "dark": "Dark",
+  "system": "System",
+  "turnOnByDefault": "Turn on by default",
   "units": "Units",
-  "@units": {
-    "description": "Measurement units setting label"
-  },
-  "kilometers": "Kilometers",
-  "@kilometers": {
-    "description": "Metric distance unit"
-  },
+  "kilometers": "Kilometres",
   "miles": "Miles",
-  "@miles": {
-    "description": "Imperial distance unit"
-  },
+  "permissions": "PERMISSIONS",
+  "notifications": "Notifications",
+  "account": "ACCOUNT",
+  "changePassword": "Change password",
+  "about": "ABOUT",
+  "appVersion": "App version",
+  "termsAndPrivacyPolicy": "Terms and Privacy Policy",
+  "sendFeedback": "Send feedback",
+  "changePhoto": "Change photo",
+  "changingNameUpdatesCards": "Changing your name updates your past share cards",
+  "saveChanges": "Save changes",
+  "youAreOffline": "You are offline. Runs will sync later.",
+  "syncFailed": "Sync failed. Will retry automatically.",
+  "retry": "Retry",
+  "unfinishedRunFound": "Unfinished run found",
+  "mapFailedToLoad": "Map failed to load",
+  "synced": "Synced",
+  "pending": "Pending",
+  "failed": "Failed",
   "deleteAccount": "Delete Account",
-  "@deleteAccount": {
-    "description": "Delete account action"
-  },
   "deleteAccountConfirmTitle": "Delete Account?",
-  "@deleteAccountConfirmTitle": {
-    "description": "Confirmation title for account deletion"
-  },
   "deleteAccountConfirmBody": "Are you sure? This will delete your profile and account.",
-  "@deleteAccountConfirmBody": {
-    "description": "Confirmation message for account deletion"
-  },
   "authenticationFailed": "Authentication failed",
-  "@authenticationFailed": {
-    "description": "Error message when authentication fails"
-  },
   "somethingWentWrong": "Something went wrong",
-  "@somethingWentWrong": {
-    "description": "Generic error message"
-  },
   "tryAgain": "Try again",
-  "@tryAgain": {
-    "description": "Retry action label"
-  },
   "saving": "Saving...",
-  "@saving": {
-    "description": "Saving state message"
-  },
   "saved": "Saved",
-  "@saved": {
-    "description": "Saved successfully message"
-  },
-  "voiceCues": "Voice Cues",
-  "@voiceCues": {
-    "description": "Voice cues setting label"
-  },
-  "autoPause": "Auto-pause",
-  "@autoPause": {
-    "description": "Auto pause setting label"
-  },
-  "batteryGuidance": "Battery Optimization Guidance",
-  "@batteryGuidance": {
-    "description": "Battery guidance setting label"
-  },
-  "privacyPolicy": "Privacy Policy",
-  "@privacyPolicy": {
-    "description": "Privacy policy setting label"
-  },
-  "termsOfService": "Terms of Service",
-  "@termsOfService": {
-    "description": "Terms of service setting label"
-  },
-  "appVersion": "App Version",
-  "@appVersion": {
-    "description": "App version label"
-  },
-  "comingSoon": "Coming in upcoming release",
-  "@comingSoon": {
-    "description": "Notice for features scheduled in later milestones"
-  },
   "enterDisplayName": "Enter your name",
-  "@enterDisplayName": {
-    "description": "Hint for display name input"
-  },
-  "displayNameRequired": "Display name cannot be empty",
-  "@displayNameRequired": {
-    "description": "Validation error for empty display name"
-  },
-  "getStarted": "Get Started",
-  "@getStarted": {
-    "description": "Get started call to action button"
-  }
+  "displayNameRequired": "Display name cannot be empty"
 }
